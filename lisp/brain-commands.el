@@ -583,7 +583,12 @@ a type has been assigned to it by the inference engine."
 
 (defun brain-import-freeplane-prompt ()
   (interactive)
-  (prompt-for-string 'brain-import-freeplane "import Freeplane data from file/directory: " brain-default-freeplane-file))
+  (prompt-for-string
+   'brain-import-freeplane
+   "import Freeplane data from file/directory: "
+   (if (boundp 'brain-default-freeplane-file)
+       brain-default-freeplane-file
+       "~/")))
 
 (defun brain-import-graphml-prompt ()
   (interactive)
